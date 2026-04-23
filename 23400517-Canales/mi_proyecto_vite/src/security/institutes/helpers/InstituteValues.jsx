@@ -9,7 +9,7 @@ export const InstituteValues = (values) => {
     Institute.DesInstituto     = values.DesInstituto;
     Institute.Alias            = values.Alias;
     Institute.Matriz           = values.Matriz;
-    Institute.IdTipoGiroOK     = values.IdTipoGiroOK;
+    Institute.Giro             = values.IdTipoGiroOK;  // 👈 mapeo correcto
     Institute.IdInstitutoSupOK = values.IdInstitutoSupOK;
     return Institute;
 };

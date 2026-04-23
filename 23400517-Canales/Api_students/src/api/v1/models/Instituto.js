@@ -1,31 +1,18 @@
 import * as mongoose from 'mongoose';
 
 const institutoSchema = new mongoose.Schema({
-    IdInstitutoPK: { type: Number, required: true },
-    IdInstitutoOK: { type: String },
-    IdInstitutoBK: { type: String },
-
-    Nombre: { type: String },
-    Ciudad: { type: String },
-    Estado: { type: String },
-    Tipo: { type: String },
-    Municipio: { type: String },
-    Direccion: { type: String },
-    Telefono: { type: String },
-    Correo: { type: String },
-
+    IdInstitutoOK:      { type: String, required: true },
+    IdInstitutoBK:      { type: String },
+    DesInstituto:       { type: String },
+    Alias:              { type: String },
+    Matriz:             { type: String },
+    Giro:               { type: String },  // 👈 en BD es Giro, no IdTipoGiroOK
+    IdInstitutoSupOK:   { type: String },
     detail_row: {
-        FechaReg: { type: Date, default: Date.now },
-        UsuarioReg: { type: String },
-        FechaUltMod: { type: Date, default: Date.now },
-        UsuarioMod: { type: String },
-        Activo: { type: String, default: 'S' },
-        Borrado: { type: String, default: 'N' }
+        Activo:          { type: String, default: 'S' },
+        Borrado:         { type: String, default: 'N' },
+        detail_row_reg:  { type: Array,  default: [] }
     }
-});
+}, { collection: 'cat_institutos' });
 
-export default mongoose.model(
-    'cat_institutos',
-    institutoSchema,
-    'cat_institutos'
-);
+export default mongoose.model('cat_institutos', institutoSchema);
