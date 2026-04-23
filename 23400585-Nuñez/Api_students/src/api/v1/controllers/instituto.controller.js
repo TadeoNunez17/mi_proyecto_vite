@@ -7,10 +7,17 @@ export const getInstitutoList = async (req, res, next) => {
     const institutoList = await InstitutoServices.getInstitutoList();
 
     if (!institutoList || institutoList.length === 0) {
-      throw boom.notFound('No se encontraron institutos registrados.');
+      return res.status(200).json({ 
+        success: false, 
+        message: 'No se encontraron institutos registrados.' 
+      });
     }
 
-    res.status(200).json(institutoList);
+    res.status(200).json({ 
+      success: true, 
+      data: [{ dataRes: institutoList }]
+    });
+
   } catch (error) {
     next(error);
   }
